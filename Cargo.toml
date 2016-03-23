@@ -1,0 +1,11 @@
+[package]
+name = "librbd-sys"
+version = "0.1.0"
+authors = ["Chris Holcombe <xfactor973@gmail.com>"]
+description = "Rust bindings for the Ceph RBD API"
+license = "MIT"
+repository = "https://github.com/cholcombe973/librbd-sys"
+
+[dependencies]
+libc = "*"
+librados-sys = "0.1.0"
