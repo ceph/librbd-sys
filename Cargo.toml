@@ -4,8 +4,9 @@ version = "0.1.0"
 authors = ["Chris Holcombe <xfactor973@gmail.com>"]
 description = "Rust bindings for the Ceph RBD API"
 license = "MIT"
+documentation = "http://cholcombe973.github.io/librbd-sys/librbd_sys/index.html"
 repository = "https://github.com/cholcombe973/librbd-sys"
 
 [dependencies]
-libc = "*"
+libc = "0.2.8"
 librados-sys = "0.1.0"
