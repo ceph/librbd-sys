@@ -1,0 +1,6 @@
+sudo: required
+before_script:
+  - sudo add-apt-repository -y ppa:ceph-ubuntu/edgers
+  - sudo apt-get update -q
+  - sudo apt-get install librados-dev
+language: rust
