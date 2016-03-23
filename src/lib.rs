@@ -19,8 +19,11 @@ pub type librbd_progress_fn_t =
 #[repr(C)]
 #[derive(Copy)]
 pub struct rbd_snap_info_t{
+    /// Numeric identifier of the snapshot
     pub id: uint64_t,
+    /// Size of the image at the time of snapshot (in bytes)
     pub size: uint64_t,
+    /// Name of the snapshot
     pub name: *const ::std::os::raw::c_char,
 }
 impl ::std::clone::Clone for rbd_snap_info_t {
@@ -33,12 +36,19 @@ impl ::std::default::Default for rbd_snap_info_t {
 #[repr(C)]
 #[derive(Copy)]
 pub struct rbd_image_info_t {
+    ///  The size of the image in bytes
     pub size: uint64_t,
+    /// The size of each object that comprises the image
     pub obj_size: uint64_t,
+    /// The number of objects in the image
     pub num_objs: uint64_t,
+    /// log_2(object_size)
     pub order: ::std::os::raw::c_int,
+    /// The prefix of the RADOS objects used to store the image
     pub block_name_prefix: [::std::os::raw::c_char; 24usize],
+    /// deprecated
     pub parent_pool: int64_t,
+    /// deprecated
     pub parent_name: [::std::os::raw::c_char; 96usize],
 }
 impl ::std::clone::Clone for rbd_image_info_t {
@@ -54,9 +64,11 @@ pub type rbd_callback_t =
                                                    *mut ::std::os::raw::c_void)>;
 #[link(name = "rbd")]
 extern "C" {
+    /// Get the version number of the librbd C library.
     pub fn rbd_version(major: *mut ::std::os::raw::c_int,
                        minor: *mut ::std::os::raw::c_int,
                        extra: *mut ::std::os::raw::c_int);
+    /// List image names.
     pub fn rbd_list(io: rados_ioctx_t, names: *mut ::std::os::raw::c_char,
                     size: *mut size_t) -> ::std::os::raw::c_int;
     pub fn rbd_create(io: rados_ioctx_t, name: *const ::std::os::raw::c_char,
@@ -75,19 +87,20 @@ extern "C" {
     /// stripe_unit != the object size and the stripe_count is != 1.
     ///
     /// # Arguments
-    /// @param io ioctx
-    /// @param name image name
-    /// @param size image size in bytes
-    /// @param features initial feature bits
-    /// @param order object/block size, as a power of two (object size == 1 << order)
-    /// @param stripe_unit stripe unit size, in bytes.
-    /// @param stripe_count number of objects to stripe over before looping
+    ///  * `io` ioctx
+    ///  * `name` image name
+    ///  * `size` image size in bytes
+    ///  * `features` initial feature bits
+    ///  * `order` object/block size, as a power of two (object size == 1 << order)
+    ///  * `stripe_unit` stripe unit size, in bytes.
+    ///  * `stripe_count` number of objects to stripe over before looping
     /// @return 0 on success, or negative error code
     pub fn rbd_create3(io: rados_ioctx_t, name: *const ::std::os::raw::c_char,
                        size: uint64_t, features: uint64_t,
                        order: *mut ::std::os::raw::c_int,
                        stripe_unit: uint64_t, stripe_count: uint64_t)
      -> ::std::os::raw::c_int;
+    /// Clone a parent rbd snapshot into a COW sparse child.
     pub fn rbd_clone(p_ioctx: rados_ioctx_t,
                      p_name: *const ::std::os::raw::c_char,
                      p_snapname: *const ::std::os::raw::c_char,
@@ -95,6 +108,7 @@ extern "C" {
                      c_name: *const ::std::os::raw::c_char,
                      features: uint64_t, c_order: *mut ::std::os::raw::c_int)
      -> ::std::os::raw::c_int;
+    /// Clone a parent rbd snapshot into a COW sparse child.
     pub fn rbd_clone2(p_ioctx: rados_ioctx_t,
                       p_name: *const ::std::os::raw::c_char,
                       p_snapname: *const ::std::os::raw::c_char,
@@ -104,6 +118,9 @@ extern "C" {
                       stripe_unit: uint64_t,
                       stripe_count: ::std::os::raw::c_int)
      -> ::std::os::raw::c_int;
+    /// Delete an RBD image. This may take a long time, since it does not return until every
+    /// object that comprises the image has been deleted. Note that all snapshots must be deleted
+    /// before the image can be removed.
     pub fn rbd_remove(io: rados_ioctx_t, name: *const ::std::os::raw::c_char)
      -> ::std::os::raw::c_int;
     pub fn rbd_remove_with_progress(io: rados_ioctx_t,
@@ -111,6 +128,7 @@ extern "C" {
                                     cb: librbd_progress_fn_t,
                                     cbdata: *mut ::std::os::raw::c_void)
      -> ::std::os::raw::c_int;
+    /// Rename an RBD image.
     pub fn rbd_rename(src_io_ctx: rados_ioctx_t,
                       srcname: *const ::std::os::raw::c_char,
                       destname: *const ::std::os::raw::c_char)
@@ -133,10 +151,10 @@ extern "C" {
     /// Attempting to write to a read-only image will return -EROFS.
     ///
     /// # Arguments
-    /// @param io ioctx to determine the pool the image is in
-    /// @param name image name
-    /// @param image where to store newly opened image handle
-    /// @param snap_name name of snapshot to open at, or NULL for no snapshot
+    ///  * `io` ioctx to determine the pool the image is in
+    ///  * `name` image name
+    ///  * `image` where to store newly opened image handle
+    ///  * `snap_name` name of snapshot to open at, or NULL for no snapshot
     /// @returns 0 on success, negative error code on failure
     pub fn rbd_open_read_only(io: rados_ioctx_t,
                               name: *const ::std::os::raw::c_char,
@@ -144,12 +162,15 @@ extern "C" {
                               snap_name: *const ::std::os::raw::c_char)
      -> ::std::os::raw::c_int;
     pub fn rbd_close(image: rbd_image_t) -> ::std::os::raw::c_int;
+
+    /// Change the size of the image.
     pub fn rbd_resize(image: rbd_image_t, size: uint64_t)
      -> ::std::os::raw::c_int;
     pub fn rbd_resize_with_progress(image: rbd_image_t, size: uint64_t,
                                     cb: librbd_progress_fn_t,
                                     cbdata: *mut ::std::os::raw::c_void)
      -> ::std::os::raw::c_int;
+    /// Get information about the image. Currently parent pool and parent name are always -1 and ‘’.
     pub fn rbd_stat(image: rbd_image_t, info: *mut rbd_image_info_t,
                     infosize: size_t) -> ::std::os::raw::c_int;
     pub fn rbd_get_old_format(image: rbd_image_t, old: *mut uint8_t)
@@ -237,11 +258,11 @@ extern "C" {
     /// Otherwise, the buffers are filled with the pool and image names
     /// of the children, with a '\0' after each.
     /// # Arguments
-    /// @param image which image (and implicitly snapshot) to list clones of
-    /// @param pools buffer in which to store pool names
-    /// @param pools_len number of bytes in pools buffer
-    /// @param images buffer in which to store image names
-    /// @param images_len number of bytes in images buffer
+    ///  * `image` which image (and implicitly snapshot) to list clones of
+    ///  * `pools` buffer in which to store pool names
+    ///  * `pools_len` number of bytes in pools buffer
+    ///  * `images` buffer in which to store image names
+    ///  * `images_len` number of bytes in images buffer
     /// @returns number of children on success, negative error code on failure
     /// @returns -ERANGE if either buffer is too short
     pub fn rbd_list_children(image: rbd_image_t,
@@ -256,15 +277,16 @@ extern "C" {
     /// corresponding size out parameter. If any of the provided buffers
     /// are too short, -ERANGE is returned after these sizes are filled in.
     /// # Arguments
-    /// @param exclusive where to store whether the lock is exclusive (1) or shared (0)
-    /// @param tag where to store the tag associated with the image
-    /// @param tag_len number of bytes in tag buffer
-    /// @param clients buffer in which locker clients are stored, separated by '\0'
-    /// @param clients_len number of bytes in the clients buffer
-    /// @param cookies buffer in which locker cookies are stored, separated by '\0'
-    /// @param cookies_len number of bytes in the cookies buffer
-    /// @param addrs buffer in which locker addresses are stored, separated by '\0'
-    /// @param addrs_len number of bytes in the clients buffer
+    ///  * `image` which image (and implicitly snapshot) to list lockers of
+    ///  * `exclusive` where to store whether the lock is exclusive (1) or shared (0)
+    ///  * `tag` where to store the tag associated with the image
+    ///  * `tag_len` number of bytes in tag buffer
+    ///  * `clients` buffer in which locker clients are stored, separated by '\0'
+    ///  * `clients_len` number of bytes in the clients buffer
+    ///  * `cookies` buffer in which locker cookies are stored, separated by '\0'
+    ///  * `cookies_len` number of bytes in the cookies buffer
+    ///  * `addrs` buffer in which locker addresses are stored, separated by '\0'
+    ///  * `addrs_len` number of bytes in the clients buffer
     /// @returns number of lockers on success, negative error code on failure
     /// @returns -ERANGE if any of the buffers are too short
     pub fn rbd_list_lockers(image: rbd_image_t,
@@ -279,8 +301,8 @@ extern "C" {
                             addrs_len: *mut size_t) -> ssize_t;
     /// Take an exclusive lock on the image.
     /// # Arguments
-    /// @param image the image to lock
-    /// @param cookie user-defined identifier for this instance of the lock
+    ///  * `image` the image to lock
+    ///  * `cookie` user-defined identifier for this instance of the lock
     /// @returns 0 on success, negative error code on failure
     /// @returns -EBUSY if the lock is already held by another (client, cookie) pair
     /// @returns -EEXIST if the lock is already held by the same (client, cookie) pair
@@ -294,9 +316,9 @@ extern "C" {
     /// same tag.
     ///
     /// # Arguments
-    /// @param image the image to lock
-    /// @param cookie user-defined identifier for this instance of the lock
-    /// @param tag user-defined identifier for this shared use of the lock
+    ///  * `image` the image to lock
+    ///  * `cookie` user-defined identifier for this instance of the lock
+    ///  * `tag` user-defined identifier for this shared use of the lock
     /// @returns 0 on success, negative error code on failure
     /// @returns -EBUSY if the lock is already held by another (client, cookie) pair
     /// @returns -EEXIST if the lock is already held by the same (client, cookie) pair
@@ -308,8 +330,8 @@ extern "C" {
     /// Release a shared or exclusive lock on the image.
     ///
     /// # Arguments
-    /// @param image the image to unlock
-    /// @param cookie user-defined identifier for the instance of the lock
+    ///  * `image` the image to unlock
+    ///  * `cookie` user-defined identifier for the instance of the lock
     /// @returns 0 on success, negative error code on failure
     /// @returns -ENOENT if the lock is not held by the specified (client, cookie) pair
     pub fn rbd_unlock(image: rbd_image_t,
@@ -319,9 +341,9 @@ extern "C" {
     /// Release a shared or exclusive lock that was taken by the specified client.
     ///
     /// # Arguments
-    /// image the image to unlock
-    /// client the entity holding the lock (as given by rbd_list_lockers())
-    /// cookie user-defined identifier for the instance of the lock to break
+    /// * `image` the image to unlock
+    /// * `client` the entity holding the lock (as given by rbd_list_lockers())
+    /// * `cookie` user-defined identifier for the instance of the lock to break
     ///
     /// @returns 0 on success, negative error code on failure
     /// @returns -ENOENT if the lock is not held by the specified (client, cookie) pair
@@ -338,10 +360,10 @@ extern "C" {
     /// defined to be zeros (a hole).  Normally the granularity for the
     /// callback is the image stripe size.
     /// # Arguments
-    /// @param image image to read
-    /// @param ofs offset to start from
-    /// @param len bytes of source image to cover
-    /// @param cb callback for each region
+    ///  * `image` image to read
+    ///  * `ofs` offset to start from
+    ///  * `len` bytes of source image to cover
+    ///  * `cb` callback for each region
     /// @returns 0 success, error otherwise
     pub fn rbd_read_iterate2(image: rbd_image_t, ofs: uint64_t, len: uint64_t,
                              cb:
@@ -369,11 +391,11 @@ extern "C" {
     /// selected for the image handle (either a snapshot or the writeable
     /// head).
     /// # Arguments
-    /// @param fromsnapname start snapshot name, or NULL
-    /// @param ofs start offset
-    /// @param len len in bytes of region to report on
-    /// @param cb callback to call for each allocated region
-    /// @param arg argument to pass to the callback
+    ///  * `fromsnapname` start snapshot name, or NULL
+    ///  * `ofs` start offset
+    ///  * `len` len in bytes of region to report on
+    ///  * `cb` callback to call for each allocated region
+    ///  * `arg` argument to pass to the callback
     /// @returns 0 on success, or negative error code on error
     pub fn rbd_diff_iterate(image: rbd_image_t,
                             fromsnapname: *const ::std::os::raw::c_char,
@@ -393,6 +415,11 @@ extern "C" {
      -> ::std::os::raw::c_int;
     pub fn rbd_write(image: rbd_image_t, ofs: uint64_t, len: size_t,
                      buf: *const ::std::os::raw::c_char) -> ssize_t;
+    /// Trim the range from the image. It will be logically filled with zeroes.
+    /// # Arguments
+    ///  * `image` the image to trim a range from
+    ///  * `ofs` offset to start from
+    ///  * `len` bytes of image to trim
     pub fn rbd_discard(image: rbd_image_t, ofs: uint64_t, len: uint64_t)
      -> ::std::os::raw::c_int;
     pub fn rbd_aio_write(image: rbd_image_t, off: uint64_t, len: size_t,
@@ -416,8 +443,8 @@ extern "C" {
     /// Start a flush if caching is enabled. Get a callback when
     /// the currently pending writes are on disk.
     /// # Arguments
-    /// @param image the image to flush writes to
-    /// @param c what to call when flushing is complete
+    ///  * `image` the image to flush writes to
+    ///  * `c` what to call when flushing is complete
     /// @returns 0 on success, negative error code on failure
     pub fn rbd_flush(image: rbd_image_t) -> ::std::os::raw::c_int;
     pub fn rbd_aio_flush(image: rbd_image_t, c: rbd_completion_t)
@@ -426,7 +453,7 @@ extern "C" {
     /// Drop any cached data for an image
     ///
     /// # Arguments
-    /// @param image the image to invalidate cached data for
+    ///  * `image` the image to invalidate cached data for
     /// @returns 0 on success, negative error code on failure
     pub fn rbd_invalidate_cache(image: rbd_image_t) -> ::std::os::raw::c_int;
 }
