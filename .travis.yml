@@ -1,12 +1,10 @@
-language: rust
-addons:
-  apt:
-    packages:
-    - librbd-dev
-rust:
-- stable
+sudo: required
 before_script:
+- sudo add-apt-repository -y ppa:ceph-ubuntu/edgers
+- sudo apt-get update -q
+- sudo apt-get install librbd-dev
 - pip install 'travis-cargo<0.2' --user && export PATH=$HOME/.local/bin:$PATH
+language: rust
 script:
 - |
   travis-cargo build &&
@@ -17,7 +15,7 @@ after_success:
 env:
   global:
   - TRAVIS_CARGO_NIGHTLY_FEATURE=""
-  - secure: ju/JL1in142rFoWQc46oUYtn5GWsibU9fWHYQFqXubQefcSq0g6gc/yvZTYX5iB0dubtwoSd2gAIuaoxFu6/BgkLNyA5OgrFM++EKixkHxu4P06l91R9QTISAl9pu8uF+NNpGalxMBfHtRFYJTvPIOsSGlOCQiYHVDqzA8r66djO01gtOIhZt1NDalLsA2vImTRT8PzhKPGiZ/KeK4mHpRHMIsl+PrV/wdiBpM/BA7qXgmcDRF7i4ZstWJCEbNNFi0yzEaHgNgaoqMXJv0BWyPQHIuHVM7QGO2lGKPMQ1T/qQMf72lEV828Bz1W+HaGWeEnzy1sXQ5iGg+kVxR+jvI0Q9Kml3KfDbJTCgKmI0SwAK++Du5EoRHGIgIdN8QuZPV4K01YgWasvtzFlytZHT3clYBITwcT8SrraeYKPLoERrlaV5k7ISGP49PDm3YyQWasKxlH1/nKjXV2cyuy2zglNqbThh0x36ONhQqw3jRtPNNwQuOdD7B/+N63/VT8kpXsH614emTr+fzsjqX4rcuNx7t6WgSr5kWYlSDkBNwqwQTKCn9ihuOcYjUyFfARQnURPkNdKAcq+NmhNtQZKXmvGvB8zttNZcR8htuiu5rMJ3UnjZiug6x4oUUnICeGNKsCA8Zti6cYUlHzuCfvPjR4YisfGeWeEADF7LGUFbXo=
+  - secure: bpSFA28J+SER27RxiNc/D7HtS39gF7y8KBxdoJDhEPI2EcDvSMlnh7PIINZEwPG7NR9EnrKSA3nkDrGLdppPZ27mytL39jDfPao/b0opO96atDczlbJAMBPJGPjrV+z1oXCceljAaZlN+JCflpoP6sJdZvpf0ktQzNGto1rDKkGOsNyxxN5XjDHY6Z/6Iws9ukofUpadSIJGufN72+94BE/eEqPqK1PbK3psdSnUzw3viK5tMINBZtorI0OrfI9UXDfIiS/vevH49m4ot7rPVrwcUKFuhjJh4rfCvdOUub+mUINp1mj/3JR9kH+TTKU2J8LyBHVPaN4QttHrPi7NZVioVwl+Cn61VVb2OjBWAdXq855jPaInSZtXafKdR5htx0Rw9jtYLLstcnzwX9VeUvAOs81U4eIahppFRci+j+DdtQhARI8JyFwgqC6pjKX6zgn4BZdsjPGt+FsN9YCbtY/NLIBabN3DAp8jIwuEyss2CjZP4MeU/KKH5MAIslQFKgAIRUekEBVbyQ1X1P2V8Ijo0i0gyuFrpybp2Um4Md1++q9Ap7PUM2aaVQre3VcXAK19skwEDa3HLdrgo5Xeov7RtsXqygq4153gAGuCoLu9xjvdHR0Xyne4BULkqZp7M9YhN4yDrNZ/wpIA5JosUWEnfNGU4Zxd4Ddorl//nUE=
 cache:
   apt: true
   rust-download: true
@@ -26,4 +24,3 @@ cache:
 notifications:
   email:
     on_success: never
-sudo: false
