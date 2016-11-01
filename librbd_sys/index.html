@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `librbd_sys` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, librbd_sys">
+
+    <title>librbd_sys - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'librbd_sys', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>librbd_sys</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-0' class='srclink' href='../src/librbd_sys/src/lib.rs.html#1-459' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Low level bindings for Ceph&#39;s RBD interface.
+Please see <a href="http://docs.ceph.com/docs/master/rbd/librbdpy/#module-rbd">Ceph librbd</a> for more
+information. Those are the python docs but the parameters should be the same.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.rbd_image_info_t.html'
+                                  title='librbd_sys::rbd_image_info_t'>rbd_image_info_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.rbd_snap_info_t.html'
+                                  title='librbd_sys::rbd_snap_info_t'>rbd_snap_info_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_aio_create_completion.html'
+                                  title='librbd_sys::rbd_aio_create_completion'>rbd_aio_create_completion</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_aio_discard.html'
+                                  title='librbd_sys::rbd_aio_discard'>rbd_aio_discard</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_aio_flush.html'
+                                  title='librbd_sys::rbd_aio_flush'>rbd_aio_flush</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_aio_get_return_value.html'
+                                  title='librbd_sys::rbd_aio_get_return_value'>rbd_aio_get_return_value</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_aio_is_complete.html'
+                                  title='librbd_sys::rbd_aio_is_complete'>rbd_aio_is_complete</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_aio_read.html'
+                                  title='librbd_sys::rbd_aio_read'>rbd_aio_read</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_aio_release.html'
+                                  title='librbd_sys::rbd_aio_release'>rbd_aio_release</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_aio_wait_for_complete.html'
+                                  title='librbd_sys::rbd_aio_wait_for_complete'>rbd_aio_wait_for_complete</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_aio_write.html'
+                                  title='librbd_sys::rbd_aio_write'>rbd_aio_write</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_break_lock.html'
+                                  title='librbd_sys::rbd_break_lock'>rbd_break_lock</a></td>
+                           <td class='docblock short'>
+                                <p>Release a shared or exclusive lock that was taken by the specified client.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_clone.html'
+                                  title='librbd_sys::rbd_clone'>rbd_clone</a></td>
+                           <td class='docblock short'>
+                                <p>Clone a parent rbd snapshot into a COW sparse child.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_clone2.html'
+                                  title='librbd_sys::rbd_clone2'>rbd_clone2</a></td>
+                           <td class='docblock short'>
+                                <p>Clone a parent rbd snapshot into a COW sparse child.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_close.html'
+                                  title='librbd_sys::rbd_close'>rbd_close</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_copy.html'
+                                  title='librbd_sys::rbd_copy'>rbd_copy</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_copy2.html'
+                                  title='librbd_sys::rbd_copy2'>rbd_copy2</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_copy_with_progress.html'
+                                  title='librbd_sys::rbd_copy_with_progress'>rbd_copy_with_progress</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_copy_with_progress2.html'
+                                  title='librbd_sys::rbd_copy_with_progress2'>rbd_copy_with_progress2</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_create.html'
+                                  title='librbd_sys::rbd_create'>rbd_create</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_create2.html'
+                                  title='librbd_sys::rbd_create2'>rbd_create2</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_create3.html'
+                                  title='librbd_sys::rbd_create3'>rbd_create3</a></td>
+                           <td class='docblock short'>
+                                <p>create new rbd image</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_diff_iterate.html'
+                                  title='librbd_sys::rbd_diff_iterate'>rbd_diff_iterate</a></td>
+                           <td class='docblock short'>
+                                <p>get difference between two versions of an image</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_discard.html'
+                                  title='librbd_sys::rbd_discard'>rbd_discard</a></td>
+                           <td class='docblock short'>
+                                <p>Trim the range from the image. It will be logically filled with zeroes.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_flatten.html'
+                                  title='librbd_sys::rbd_flatten'>rbd_flatten</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_flush.html'
+                                  title='librbd_sys::rbd_flush'>rbd_flush</a></td>
+                           <td class='docblock short'>
+                                <p>Start a flush if caching is enabled. Get a callback when
+the currently pending writes are on disk.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_get_features.html'
+                                  title='librbd_sys::rbd_get_features'>rbd_get_features</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_get_old_format.html'
+                                  title='librbd_sys::rbd_get_old_format'>rbd_get_old_format</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_get_overlap.html'
+                                  title='librbd_sys::rbd_get_overlap'>rbd_get_overlap</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_get_parent_info.html'
+                                  title='librbd_sys::rbd_get_parent_info'>rbd_get_parent_info</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_get_size.html'
+                                  title='librbd_sys::rbd_get_size'>rbd_get_size</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_get_stripe_count.html'
+                                  title='librbd_sys::rbd_get_stripe_count'>rbd_get_stripe_count</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_get_stripe_unit.html'
+                                  title='librbd_sys::rbd_get_stripe_unit'>rbd_get_stripe_unit</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_invalidate_cache.html'
+                                  title='librbd_sys::rbd_invalidate_cache'>rbd_invalidate_cache</a></td>
+                           <td class='docblock short'>
+                                <p>Drop any cached data for an image</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_list.html'
+                                  title='librbd_sys::rbd_list'>rbd_list</a></td>
+                           <td class='docblock short'>
+                                <p>List image names.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_list_children.html'
+                                  title='librbd_sys::rbd_list_children'>rbd_list_children</a></td>
+                           <td class='docblock short'>
+                                <p>List all images that are cloned from the image at the
+snapshot that is set via rbd_snap_set().</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_list_lockers.html'
+                                  title='librbd_sys::rbd_list_lockers'>rbd_list_lockers</a></td>
+                           <td class='docblock short'>
+                                <p>List clients that have locked the image and information about the lock.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_lock_exclusive.html'
+                                  title='librbd_sys::rbd_lock_exclusive'>rbd_lock_exclusive</a></td>
+                           <td class='docblock short'>
+                                <p>Take an exclusive lock on the image.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_lock_shared.html'
+                                  title='librbd_sys::rbd_lock_shared'>rbd_lock_shared</a></td>
+                           <td class='docblock short'>
+                                <p>Take a shared lock on the image.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_open.html'
+                                  title='librbd_sys::rbd_open'>rbd_open</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_open_read_only.html'
+                                  title='librbd_sys::rbd_open_read_only'>rbd_open_read_only</a></td>
+                           <td class='docblock short'>
+                                <p>Open an image in read-only mode.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_read.html'
+                                  title='librbd_sys::rbd_read'>rbd_read</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_read_iterate2.html'
+                                  title='librbd_sys::rbd_read_iterate2'>rbd_read_iterate2</a></td>
+                           <td class='docblock short'>
+                                <p>iterate read over an image
+Reads each region of the image and calls the callback.  If the
+buffer pointer passed to the callback is NULL, the given extent is
+defined to be zeros (a hole).  Normally the granularity for the
+callback is the image stripe size.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_remove.html'
+                                  title='librbd_sys::rbd_remove'>rbd_remove</a></td>
+                           <td class='docblock short'>
+                                <p>Delete an RBD image. This may take a long time, since it does not return until every
+object that comprises the image has been deleted. Note that all snapshots must be deleted
+before the image can be removed.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_remove_with_progress.html'
+                                  title='librbd_sys::rbd_remove_with_progress'>rbd_remove_with_progress</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_rename.html'
+                                  title='librbd_sys::rbd_rename'>rbd_rename</a></td>
+                           <td class='docblock short'>
+                                <p>Rename an RBD image.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_resize.html'
+                                  title='librbd_sys::rbd_resize'>rbd_resize</a></td>
+                           <td class='docblock short'>
+                                <p>Change the size of the image.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_resize_with_progress.html'
+                                  title='librbd_sys::rbd_resize_with_progress'>rbd_resize_with_progress</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_snap_create.html'
+                                  title='librbd_sys::rbd_snap_create'>rbd_snap_create</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_snap_is_protected.html'
+                                  title='librbd_sys::rbd_snap_is_protected'>rbd_snap_is_protected</a></td>
+                           <td class='docblock short'>
+                                <p>Determine whether a snapshot is protected.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_snap_list.html'
+                                  title='librbd_sys::rbd_snap_list'>rbd_snap_list</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_snap_list_end.html'
+                                  title='librbd_sys::rbd_snap_list_end'>rbd_snap_list_end</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_snap_protect.html'
+                                  title='librbd_sys::rbd_snap_protect'>rbd_snap_protect</a></td>
+                           <td class='docblock short'>
+                                <p>Prevent a snapshot from being deleted until it is unprotected.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_snap_remove.html'
+                                  title='librbd_sys::rbd_snap_remove'>rbd_snap_remove</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_snap_rollback.html'
+                                  title='librbd_sys::rbd_snap_rollback'>rbd_snap_rollback</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_snap_rollback_with_progress.html'
+                                  title='librbd_sys::rbd_snap_rollback_with_progress'>rbd_snap_rollback_with_progress</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_snap_set.html'
+                                  title='librbd_sys::rbd_snap_set'>rbd_snap_set</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_snap_unprotect.html'
+                                  title='librbd_sys::rbd_snap_unprotect'>rbd_snap_unprotect</a></td>
+                           <td class='docblock short'>
+                                <p>Allow a snaphshot to be deleted</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_stat.html'
+                                  title='librbd_sys::rbd_stat'>rbd_stat</a></td>
+                           <td class='docblock short'>
+                                <p>Get information about the image. Currently parent pool and parent name are always -1 and ‘’.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_unlock.html'
+                                  title='librbd_sys::rbd_unlock'>rbd_unlock</a></td>
+                           <td class='docblock short'>
+                                <p>Release a shared or exclusive lock on the image.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_version.html'
+                                  title='librbd_sys::rbd_version'>rbd_version</a></td>
+                           <td class='docblock short'>
+                                <p>Get the version number of the librbd C library.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.rbd_write.html'
+                                  title='librbd_sys::rbd_write'>rbd_write</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.librbd_progress_fn_t.html'
+                                  title='librbd_sys::librbd_progress_fn_t'>librbd_progress_fn_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.rbd_callback_t.html'
+                                  title='librbd_sys::rbd_callback_t'>rbd_callback_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.rbd_completion_t.html'
+                                  title='librbd_sys::rbd_completion_t'>rbd_completion_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.rbd_image_t.html'
+                                  title='librbd_sys::rbd_image_t'>rbd_image_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.rbd_snap_t.html'
+                                  title='librbd_sys::rbd_snap_t'>rbd_snap_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "librbd_sys";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
